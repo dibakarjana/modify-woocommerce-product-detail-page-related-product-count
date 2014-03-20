@@ -8,6 +8,6 @@ Look For my comments (*****) in the related.php file.
 
 It worked for me, let me know if this works for you as well.
 
-Cheers!
-Dibakar
+Cheers! <br>
+Dibakar <br>
 http://www.themepurpose.com
