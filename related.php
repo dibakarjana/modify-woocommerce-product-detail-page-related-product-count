@@ -11,7 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $product, $woocommerce_loop;
 
-$related = $product->get_related();
+
+// $related = $product->get_related( $posts_per_page ); **** Change this Line to Below ****
+
+$related = $product->get_related();   // ******  Remove $posts_per_page from () 
 
 if ( sizeof( $related ) == 0 ) return;
 
@@ -19,7 +22,8 @@ $args = apply_filters( 'woocommerce_related_products_args', array(
 	'post_type'				=> 'product',
 	'ignore_sticky_posts'	=> 1,
 	'no_found_rows' 		=> 1,
-	'posts_per_page' 		=> 4,
+//	'posts_per_page' 		=> $posts_per_page,   **** Change this Line to Below ****
+	'posts_per_page' 		=> 4,    // ***** Convert $posts_per_page from to ( 4  = column number )
 	'orderby' 				=> $orderby,
 	'post__in' 				=> $related,
 	'post__not_in'			=> array( $product->id )
@@ -27,7 +31,7 @@ $args = apply_filters( 'woocommerce_related_products_args', array(
 
 $products = new WP_Query( $args );
 
-$columns = 4;
+$columns = 4;  //  ***** Add This Line | ( 4  = column number )
 $woocommerce_loop['columns'] = $columns;
 
 if ( $products->have_posts() ) : ?>
